@@ -14615,12 +14615,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <span class="c1"># Read a frame from the webcam</span>
     <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="n">framecounter</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="n">framebuffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+    <span class="n">framebuffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span> <span class="c1">#add this frame to the buffer</span>
     
+    <span class="c1"># show delayed frame when there is enough in the buffer</span>
     <span class="k">if</span> <span class="n">framecounter</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">delay</span><span class="p">):</span>
         <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;webcam feed with x delay&quot;</span><span class="p">,</span> <span class="n">framebuffer</span><span class="p">[</span><span class="n">framecounter</span><span class="o">-</span><span class="n">delay</span><span class="p">])</span>
     
-    <span class="c1"># Add a delay of 100ms</span>
+    <span class="c1">#you can quit the window when q is pressed</span>
     <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
         <span class="k">break</span>
 
